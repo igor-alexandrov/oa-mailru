@@ -1,0 +1,61 @@
+= oa-mailru
+
+Auhtorization with Mail.RU extension for OmniAuth
+
+== Installation
+
+  gem install oa-mailru
+
+Add to config/initializers/omniauth.rb:
+
+  #for rails3 projects
+  Rails.application.config.middleware.use OmniAuth::Builder do
+    provider :mailru, <Application ID>, <Private Key>
+  end
+  #for rails2 projects
+  ActionController::Dispatcher.middleware.use "OmniAuth::Builder" do
+    provider :mailru, <Application ID>, <Private Key>
+  end
+
+If omniauth routes doesn't exist add them to config/routes.rb (e.g.):
+
+  #rails3
+  match '/auth/:provider/callback' => 'authentications#create'
+  #rails2
+  map.auth_callback '/auth/:provider/callback', :controller => :authentications :action => :create
+
+Then use special helper method for generate mail.ru button:
+
+  <%= mailru_login_button %>
+
+After click on the button popup window with mail.ru auth-page will be shown and after user was signed in and added 
+permissions for the application then user-data will be transfered with POST-request to /auth/mailru/callback path.
+In action with this path you can use params from request["omniauth.auth"] which body look like:
+
+  {
+    'uid' => '1234567890', # user Id from mail.ru
+    'provider' => 'mailru',
+    'user_info' => {
+      'name' => 'Alexander Gorkunov',
+      'firstName' => 'Alexander',
+      'lastName' => 'Gorkunov'
+    }
+  }
+
+== Links
+
+OmniAuth: http://github.com/intridea/omniauth
+
+== Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+== Copyright
+
+Copyright (c) 2010 Alexander Gorkunov. See LICENSE for details.
