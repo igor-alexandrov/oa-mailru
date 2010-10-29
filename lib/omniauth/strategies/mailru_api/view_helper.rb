@@ -31,17 +31,27 @@ HEADER
 <div id="mailru_api_transport"></div>
 <script type="text/javascript">
   mailruLogin = {
+    initialized: false,
+    initMailRuApi: function() {
+        console.log("init");
+        mailru.connect.init('#{OmniAuth.config.mailru_app_id}', '#{OmniAuth.config.mailru_private_key}');
+        #{init_control}
+        mailru.events.listen(mailru.connect.events.login, function(session){
+                mailru.common.users.getInfo(function(result){
+                  mailruLogin.redirectWithPost('#{OmniAuth.config.path_prefix}/mailru/callback', result[0]);
+                });
+        });
+        mailruLogin.initialized = true;
+    },
     onLoad: function() {
       mailru.loader.require('api', function() {
-          mailru.connect.init('#{OmniAuth.config.mailru_app_id}', '#{OmniAuth.config.mailru_private_key}');
-          #{init_control}
-          mailru.events.listen(mailru.connect.events.login, function(session){
-                  mailru.common.users.getInfo(function(result){
-                    mailruLogin.redirectWithPost('#{OmniAuth.config.path_prefix}/mailru/callback', result[0]);
-                  });
-          });
+        mailruLogin.initMailRuApi();
       });
       
+    },
+    login: function(){
+      if(!mailruLogin.initialized) mailruLogin.initMailRuApi();
+      mailru.connect.login();
     },
     redirectWithPost: function(url, data) {
       data = data || {};
