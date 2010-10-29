@@ -23,23 +23,25 @@ HEADER
           end
           
           def mailru_login_button(control = nil)
-            control = "<div id=\"mailru_login\" style=\"margin: 0 auto 20px auto;\" onclick=\"mailruLogin.Login();\"></div>" unless control.present?
+            unless control.present?
+              control = "<a class='mrc__connectButton'></a>" 
+              init_control = "mailru.connect.initButton();"
+            end
 <<-BUTTON
 <div id="mailru_api_transport"></div>
 <script type="text/javascript">
-  mailru.loader.require('api', function() {
-      mailru.connect.init('#{OmniAuth.config.mailru_app_id}', '#{OmniAuth.config.mailru_private_key}');
-      mailru.events.listen(mailru.connect.events.login, function(session){
-              mailru.common.users.getInfo(function(result){
-                mailruLogin.redirectWithPost('#{OmniAuth.config.path_prefix}/mailru/callback', result[0]);
-              });
-      });
-  });
-
   mailruLogin = {
-    Login: function() {
-      window.open('http://connect.mail.ru/connect?app_id=#{OmniAuth.config.mailru_app_id}&host=http://' + window.location.host, '', 'width=550, height=510');
-      return false;
+    onLoad: function() {
+      mailru.loader.require('api', function() {
+          mailru.connect.init('#{OmniAuth.config.mailru_app_id}', '#{OmniAuth.config.mailru_private_key}');
+          #{init_control}
+          mailru.events.listen(mailru.connect.events.login, function(session){
+                  mailru.common.users.getInfo(function(result){
+                    mailruLogin.redirectWithPost('#{OmniAuth.config.path_prefix}/mailru/callback', result[0]);
+                  });
+          });
+      });
+      
     },
     redirectWithPost: function(url, data) {
       data = data || {};
@@ -83,6 +85,10 @@ HEADER
     el.charset = "windows-1251";
     el.src = "http://cdn.connect.mail.ru/js/loader.js";
     el.async = true;
+    el.onreadystatechange= function () {
+      if (this.readyState == 'complete') mailruLogin.onLoad();
+    }
+    el.onload= mailruLogin.onLoad;
     document.getElementById("mailru_api_transport").appendChild(el);
   }());
 </script>

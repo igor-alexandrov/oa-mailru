@@ -17,7 +17,15 @@ Gem::Specification.new do |s|
      "README.rdoc"
   ]
   s.files = [
-    "README.rdoc"
+    "LICENSE",
+     "README.rdoc",
+     "Rakefile",
+     "VERSION",
+     "lib/oa-mailru.rb",
+     "lib/omniauth/mailru.rb",
+     "lib/omniauth/strategies/mailru_api.rb",
+     "lib/omniauth/strategies/mailru_api/view_helper.rb",
+     "oa-mailru.gemspec"
   ]
   s.homepage = %q{http://github.com/gorkunov/oa-mailru}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -25,6 +33,10 @@ Gem::Specification.new do |s|
   s.rubyforge_project = %q{oa-mailru}
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{OmniAuth extension for mail.ru authentication}
+  s.test_files = [
+    "spec/spec_helper.rb",
+     "spec/oa-mailru_spec.rb"
+  ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
@@ -32,13 +44,16 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<oa-core>, ["~> 0.1.4"])
+      s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_development_dependency(%q<yard>, [">= 0"])
     else
       s.add_dependency(%q<oa-core>, ["~> 0.1.4"])
+      s.add_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_dependency(%q<yard>, [">= 0"])
     end
   else
     s.add_dependency(%q<oa-core>, ["~> 0.1.4"])
+    s.add_dependency(%q<rspec>, [">= 1.2.9"])
     s.add_dependency(%q<yard>, [">= 0"])
   end
 end

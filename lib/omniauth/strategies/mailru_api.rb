@@ -15,7 +15,7 @@ module OmniAuth
 
       def initialize(app, app_id, app_private_key, options = {})
         OmniAuth.config.mailru_app_id = app_id
-        OmniAuth.config.mailru_app_private_key = app_private_key
+        OmniAuth.config.mailru_private_key = app_private_key
         @options = options
         super(app, :mailru)
       end
