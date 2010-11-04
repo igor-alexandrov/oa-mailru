@@ -35,9 +35,12 @@ module OmniAuth
             'name' => "#{request[:first_name]} #{request[:last_name]}",
             'first_name' => request[:first_name],
             'last_name' => request[:last_name],
-            'image' => request[:pic],
+            'picture' => request[:has_pic] ? request[:pic] : nil,
+            'country' => request[:country],
+            'town' => request[:city],
             'urls' => { 'Page' => request[:link] }
-          }
+          },
+          'extra' => {'user_hash' => request}
         })
       end
     end

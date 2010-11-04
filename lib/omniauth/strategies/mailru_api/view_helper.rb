@@ -28,12 +28,11 @@ HEADER
               init_control = "mailru.connect.initButton();"
             end
 <<-BUTTON
-<div id="mailru_api_transport"></div>
+<div id="mailru_api_transport" style="display:inline;"></div>
 <script type="text/javascript">
   mailruLogin = {
     initialized: false,
     initMailRuApi: function() {
-        console.log("init");
         mailru.connect.init('#{OmniAuth.config.mailru_app_id}', '#{OmniAuth.config.mailru_private_key}');
         #{init_control}
         mailru.events.listen(mailru.connect.events.login, function(session){
@@ -66,7 +65,19 @@ HEADER
       for (var property in data) {
         if (data.hasOwnProperty(property)) {
           var value = data[property];
-          if (value instanceof Array) {
+          if(property == 'location') {
+            input = document.createElement("input");
+            input.setAttribute("type", "hidden");
+            input.setAttribute("name", 'county');
+            input.setAttribute("value", value['country']['name']);
+            form.appendChild(input);
+            input = document.createElement("input");
+            input.setAttribute("type", "hidden");
+            input.setAttribute("name", 'city');
+            input.setAttribute("value", value['city']['name']);
+            form.appendChild(input);
+          }
+          else if (value instanceof Array) {
             for (var i = 0, l = value.length; i < l; i++) {
               input = document.createElement("input");
               input.setAttribute("type", "hidden");
@@ -85,7 +96,7 @@ HEADER
         }
       }
       document.body.appendChild(form);
-      form.submit();
+      $(form).ajaxSubmit({ dataType: 'script' });
       document.body.removeChild(form);
     }
   };
