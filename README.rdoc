@@ -10,11 +10,11 @@ Add to config/initializers/omniauth.rb:
 
   #for rails3 projects
   Rails.application.config.middleware.use OmniAuth::Builder do
-    provider :MailRuApi, <Application ID>, <Private Key>
+    provider :mail_ru_api, <Application ID>, <Private Key>
   end
   #for rails2 projects
   ActionController::Dispatcher.middleware.use "OmniAuth::Builder" do
-    provider :mailru, <Application ID>, <Private Key>
+    provider :mail_ru_api, <Application ID>, <Private Key>
   end
 
 If omniauth routes doesn't exist add them to config/routes.rb (e.g.):
@@ -28,6 +28,18 @@ Then use special helper method for generate mail.ru button:
 
   <%= raw mailru_login_button %>
 
+or if you want use custom button then use:
+
+  <%= raw mailru_login_button("<a href='#' onclick='mailruLogin.login();'>Mail.RU Login</a>") %>
+
+or if you want use jquery ajaxForm then use:
+
+  <%= raw mailru_login_button(nil, true) %>
+
+ajaForm with custom button
+
+  <%= raw mailru_login_button("<a href='#' onclick='mailruLogin.login();'>Mail.RU Login</a>", true) %>
+
 After click on the button popup window with mail.ru auth-page will be shown and after user was signed in and added 
 permissions for the application then user-data will be transfered with POST-request to /auth/mailru/callback path.
 In action with this path you can use params from request["omniauth.auth"] which body look like:
@@ -36,11 +48,21 @@ In action with this path you can use params from request["omniauth.auth"] which 
     'uid' => '1234567890', # user Id from mail.ru
     'provider' => 'mailru',
     'user_info' => {
+      'nick' => 'alexander.gorkunov',
       'name' => 'Alexander Gorkunov',
-      'firstName' => 'Alexander',
-      'lastName' => 'Gorkunov'
-    }
+      'first_name' => 'Alexander',
+      'last_name' => 'Gorkunov',
+      'picture' => 'userpic url here'
+      'country' => 'Russia',
+      'town' => 'Samara'
+    },
+    'extra' => {'user_hash' => 'some additional data here'}
   }
+
+== Debuging Information
+
+Mail.RU API has some host name permission restrictions, so correct debugging session is available only on public server with 
+some host name (don't forget to put receiver.html to root directory of your site).
 
 == Links
 

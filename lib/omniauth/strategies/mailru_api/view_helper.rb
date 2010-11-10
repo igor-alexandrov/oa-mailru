@@ -22,7 +22,7 @@ module OmniAuth
 HEADER
           end
           
-          def mailru_login_button(control = nil)
+          def mailru_login_button(control = nil, use_jquery_form = false)
             unless control.present?
               control = "<a class='mrc__connectButton'></a>" 
               init_control = "mailru.connect.initButton();"
@@ -46,7 +46,6 @@ HEADER
       mailru.loader.require('api', function() {
         mailruLogin.initMailRuApi();
       });
-      
     },
     login: function(){
       if(!mailruLogin.initialized) mailruLogin.initMailRuApi();
@@ -96,7 +95,7 @@ HEADER
         }
       }
       document.body.appendChild(form);
-      $(form).ajaxSubmit({ dataType: 'script' });
+      #{ user_ajax ? "$(form).ajaxSubmit({ dataType: 'script' });" : "form.submit();" }
       document.body.removeChild(form);
     }
   };
