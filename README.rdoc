@@ -10,7 +10,7 @@ Add to config/initializers/omniauth.rb:
 
   #for rails3 projects
   Rails.application.config.middleware.use OmniAuth::Builder do
-    provider :mailru, <Application ID>, <Private Key>
+    provider :MailRuApi, <Application ID>, <Private Key>
   end
   #for rails2 projects
   ActionController::Dispatcher.middleware.use "OmniAuth::Builder" do
