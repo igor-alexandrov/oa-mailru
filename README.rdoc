@@ -36,7 +36,7 @@ or if you want use jquery ajaxForm then use:
 
   <%= raw mailru_login_button(nil, true) %>
 
-ajaForm with custom button
+ajaxForm with custom button
 
   <%= raw mailru_login_button("<a href='#' onclick='mailruLogin.login();'>Mail.RU Login</a>", true) %>
 
@@ -59,7 +59,7 @@ In action with this path you can use params from request["omniauth.auth"] which 
     'extra' => {'user_hash' => 'some additional data here'}
   }
 
-== Debuging Information
+== Debugging Information
 
 Mail.RU API has some host name permission restrictions, so correct debugging session is available only on public server with 
 some host name (don't forget to put receiver.html to root directory of your site).
