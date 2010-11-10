@@ -26,7 +26,7 @@ If omniauth routes doesn't exist add them to config/routes.rb (e.g.):
 
 Then use special helper method for generate mail.ru button:
 
-  <%= mailru_login_button %>
+  <%= raw mailru_login_button %>
 
 After click on the button popup window with mail.ru auth-page will be shown and after user was signed in and added 
 permissions for the application then user-data will be transfered with POST-request to /auth/mailru/callback path.
