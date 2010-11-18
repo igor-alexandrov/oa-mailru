@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{oa-mailru}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alexander Gorkunov"]
-  s.date = %q{2010-10-29}
+  s.date = %q{2010-11-18}
   s.description = %q{OmniAuth extension for mail.ru authentication}
   s.email = %q{alexander.gorkunov@gmail.com}
   s.extra_rdoc_files = [
@@ -17,7 +17,8 @@ Gem::Specification.new do |s|
      "README.rdoc"
   ]
   s.files = [
-    "LICENSE",
+    ".gitignore",
+     "LICENSE",
      "README.rdoc",
      "Rakefile",
      "VERSION",
@@ -25,7 +26,10 @@ Gem::Specification.new do |s|
      "lib/omniauth/mailru.rb",
      "lib/omniauth/strategies/mailru_api.rb",
      "lib/omniauth/strategies/mailru_api/view_helper.rb",
-     "oa-mailru.gemspec"
+     "oa-mailru.gemspec",
+     "spec/oa-mailru_spec.rb",
+     "spec/spec.opts",
+     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/gorkunov/oa-mailru}
   s.rdoc_options = ["--charset=UTF-8"]

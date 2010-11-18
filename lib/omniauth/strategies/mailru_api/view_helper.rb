@@ -95,7 +95,7 @@ HEADER
         }
       }
       document.body.appendChild(form);
-      #{ user_ajax ? "$(form).ajaxSubmit({ dataType: 'script' });" : "form.submit();" }
+      #{ use_jquery_form ? "$(form).ajaxSubmit({ dataType: 'script' });" : "form.submit();" }
       document.body.removeChild(form);
     }
   };
