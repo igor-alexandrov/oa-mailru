@@ -22,7 +22,7 @@ module OmniAuth
 HEADER
           end
           
-          def mailru_login_button(control = nil, use_jquery_form = false)
+          def mailru_login_button(control = nil, use_jquery_form = true)
             unless control.present?
               control = "<a class='mrc__connectButton'></a>" 
               init_control = "mailru.connect.initButton();"
