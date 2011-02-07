@@ -1,10 +1,15 @@
-= oa-mailru
+= oa-mailru_alexandrov
 
 Auhtorization with Mail.RU extension for OmniAuth
+Based on Alexander Gorkunov oa-mailru. Added JQuery magic to Mail.Ru intialization script.
 
 == Installation
 
-  gem install oa-mailru
+  gem install oa-mailru_alexandrov
+
+Add to environment.rb
+  
+  config.gem 'oa-mailru_alexandrov', :lib => 'oa-mailru'
 
 Add to config/initializers/omniauth.rb:
 
@@ -32,14 +37,6 @@ or if you want use custom button then use:
 
   <%= raw mailru_login_button("<a href='#' onclick='mailruLogin.login();'>Mail.RU Login</a>") %>
 
-or if you want use jquery ajaxForm then use:
-
-  <%= raw mailru_login_button(nil, true) %>
-
-ajaxForm with custom button
-
-  <%= raw mailru_login_button("<a href='#' onclick='mailruLogin.login();'>Mail.RU Login</a>", true) %>
-
 After click on the button popup window with mail.ru auth-page will be shown and after user was signed in and added 
 permissions for the application then user-data will be transfered with POST-request to /auth/mailru/callback path.
 In action with this path you can use params from request["omniauth.auth"] which body look like:
@@ -48,13 +45,14 @@ In action with this path you can use params from request["omniauth.auth"] which 
     'uid' => '1234567890', # user Id from mail.ru
     'provider' => 'mailru',
     'user_info' => {
-      'nick' => 'alexander.gorkunov',
-      'name' => 'Alexander Gorkunov',
-      'first_name' => 'Alexander',
-      'last_name' => 'Gorkunov',
+      'nick' => 'igor.alexandrov',
+      'email' => 'igor-alexandrov@inbox.ru'
+      'name' => 'Igor Alexandrov',
+      'first_name' => 'Igor',
+      'last_name' => 'Alexandrov',
       'picture' => 'userpic url here'
       'country' => 'Russia',
-      'town' => 'Samara'
+      'town' => 'Tver'
     },
     'extra' => {'user_hash' => 'some additional data here'}
   }
@@ -80,4 +78,4 @@ OmniAuth: http://github.com/intridea/omniauth
 
 == Copyright
 
-Copyright (c) 2010 Alexander Gorkunov. See LICENSE for details.
+Copyright (c) 2011 Alexander Gorkunov, Igor Alexandrov. See LICENSE for details.

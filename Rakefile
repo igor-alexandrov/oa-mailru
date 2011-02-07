@@ -4,13 +4,13 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "oa-mailru"
+    gem.name = "oa-mailru_alexandrov"
     gem.summary = %Q{OmniAuth extension for mail.ru authentication}
     gem.description = %Q{OmniAuth extension for mail.ru authentication}
-    gem.email = "alexander.gorkunov@gmail.com"
-    gem.homepage = "http://github.com/gorkunov/oa-mailru"
-    gem.authors = ["Alexander Gorkunov"]
-    gem.rubyforge_project = "oa-mailru"
+    gem.email = "igor.alexandrov@gmail.com"
+    gem.homepage = "http://github.com/igor-alexandrov/oa-mailru"
+    gem.authors = ["Alexander Gorkunov", "Igor Alexandrov"]
+    # gem.rubyforge_project = "oa-mailru"
     gem.add_dependency 'oa-core', '~>0.1.4'
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.add_development_dependency "yard", ">= 0"

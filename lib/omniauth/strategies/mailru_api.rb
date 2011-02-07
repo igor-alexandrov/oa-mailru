@@ -32,6 +32,7 @@ module OmniAuth
           'uid' => request[:uid],
           'user_info' => {
             'nick' => request[:nick],
+            'email' => request[:email],
             'name' => "#{request[:first_name]} #{request[:last_name]}",
             'first_name' => request[:first_name],
             'last_name' => request[:last_name],
