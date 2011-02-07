@@ -9,7 +9,7 @@ begin
     gem.description = %Q{OmniAuth extension for mail.ru authentication}
     gem.email = "igor.alexandrov@gmail.com"
     gem.homepage = "http://github.com/igor-alexandrov/oa-mailru"
-    gem.authors = ["Alexander Gorkunov", "Igor Alexandrov"]
+    gem.authors = ["Igor Alexandrov", "Alexander Gorkunov"]
     # gem.rubyforge_project = "oa-mailru"
     gem.add_dependency 'oa-core', '~>0.1.4'
     gem.add_development_dependency "rspec", ">= 1.2.9"
