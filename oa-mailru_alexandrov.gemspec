@@ -5,10 +5,10 @@
 
 Gem::Specification.new do |s|
   s.name = %q{oa-mailru_alexandrov}
-  s.version = "0.0.4"
+  s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Alexander Gorkunov", "Igor Alexandrov"]
+  s.authors = ["Igor Alexandrov", "Alexander Gorkunov"]
   s.date = %q{2011-02-07}
   s.description = %q{OmniAuth extension for mail.ru authentication}
   s.email = %q{igor.alexandrov@gmail.com}
@@ -25,7 +25,9 @@ Gem::Specification.new do |s|
     "lib/omniauth/mailru.rb",
     "lib/omniauth/strategies/mailru_api.rb",
     "lib/omniauth/strategies/mailru_api/view_helper.rb",
+    "oa-mailru_alexandrov.gemspec",
     "pkg/oa-mailru_alexandrov-0.0.4.gem",
+    "pkg/oa-mailru_alexandrov-0.0.5.gem",
     "spec/oa-mailru_spec.rb",
     "spec/spec.opts",
     "spec/spec_helper.rb"
