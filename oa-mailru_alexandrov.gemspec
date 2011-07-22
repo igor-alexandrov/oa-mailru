@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{oa-mailru_alexandrov}
-  s.version = "0.0.5"
+  s.version = "0.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Igor Alexandrov", "Alexander Gorkunov"]
-  s.date = %q{2011-02-07}
+  s.date = %q{2011-07-22}
   s.description = %q{OmniAuth extension for mail.ru authentication}
   s.email = %q{igor.alexandrov@gmail.com}
   s.extra_rdoc_files = [
@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
     "README.rdoc"
   ]
   s.files = [
+    "Gemfile",
+    "Gemfile.lock",
     "LICENSE",
     "README.rdoc",
     "Rakefile",
@@ -26,35 +28,46 @@ Gem::Specification.new do |s|
     "lib/omniauth/strategies/mailru_api.rb",
     "lib/omniauth/strategies/mailru_api/view_helper.rb",
     "oa-mailru_alexandrov.gemspec",
-    "pkg/oa-mailru_alexandrov-0.0.4.gem",
     "pkg/oa-mailru_alexandrov-0.0.5.gem",
+    "pkg/oa-mailru_alexandrov-0.0.6.gem",
     "spec/oa-mailru_spec.rb",
     "spec/spec.opts",
     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/igor-alexandrov/oa-mailru}
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.5.0}
+  s.rubygems_version = %q{1.6.2}
   s.summary = %q{OmniAuth extension for mail.ru authentication}
-  s.test_files = [
-    "spec/oa-mailru_spec.rb",
-    "spec/spec_helper.rb"
-  ]
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<oa-core>, ["~> 0.1.4"])
+      s.add_runtime_dependency(%q<omniauth>, [">= 0.2.0.beta4"])
+      s.add_development_dependency(%q<shoulda>, [">= 0"])
+      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
+      s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_runtime_dependency(%q<omniauth>, [">= 0.2.0.beta4"])
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_development_dependency(%q<yard>, [">= 0"])
     else
-      s.add_dependency(%q<oa-core>, ["~> 0.1.4"])
+      s.add_dependency(%q<omniauth>, [">= 0.2.0.beta4"])
+      s.add_dependency(%q<shoulda>, [">= 0"])
+      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
+      s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
+      s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<omniauth>, [">= 0.2.0.beta4"])
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_dependency(%q<yard>, [">= 0"])
     end
   else
-    s.add_dependency(%q<oa-core>, ["~> 0.1.4"])
+    s.add_dependency(%q<omniauth>, [">= 0.2.0.beta4"])
+    s.add_dependency(%q<shoulda>, [">= 0"])
+    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
+    s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
+    s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<omniauth>, [">= 0.2.0.beta4"])
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
     s.add_dependency(%q<yard>, [">= 0"])
   end
